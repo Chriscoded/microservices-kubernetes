@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9HP+euqR0TTiz64VPuBue7F+9OAqgvlQFIQChklxa6QXCARQLKTmSKwGXoWeeYNVpsuRZWWM3GFlTVtnmz8bPA==",
+  "dgSpecHash": "1b7E5W/7LbHkz+dzLMSG4tVxsu0HuHgv4YO5nGYKXcZlfvXrED1dpZSJQoOoLQ2EYDyVwkizXEXCY4ZzS2h1Fw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\CHRISCODED\\vs 2022 projects\\s4\\e3\\CommandsService\\CommandsService.csproj",
+  "projectFilePath": "C:\\Users\\CHRISCODED\\vs version projects\\vs 2022 projects\\s4\\e3\\CommandsService\\CommandsService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CHRISCODED\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\CHRISCODED\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
