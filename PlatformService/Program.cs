@@ -4,10 +4,23 @@ using PlatformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// // Add services to the container.
 
-builder.Services.AddDbContext<AppDbContext>(option => 
-    option.UseInMemoryDatabase("InMem"));
+
+if (builder.Environment.IsProduction())
+{
+    Console.WriteLine("--> Using SqlServer Db");
+     builder.Services.AddDbContext<AppDbContext>(opt =>
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformsConn")));
+ }
+
+ else
+{
+    Console.WriteLine("--> Using InMem Db");
+    builder.Services.AddDbContext<AppDbContext>(option =>
+   option.UseInMemoryDatabase("InMem"));
+}
+
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
@@ -20,23 +33,23 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 ConfigurationManager configuration = builder.Configuration; // allows both to access and to set up the config
 IWebHostEnvironment environment = builder.Environment;
 
-Console.WriteLine("CommandService Endpoint");
+Console.WriteLine("CommandService Endpoint"); 
 Console.WriteLine($"--> CommandService Endpoint {configuration["CommandService"]}");
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-PrepDb.PrepPopulation(app);
+PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 
 app.MapControllers();
 
