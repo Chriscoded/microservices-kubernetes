@@ -15,6 +15,9 @@ spec:
       containers:
         - name: platformservice
           image: chris5873/platformservice:latest
+ 	  env:
+    	  - name: ASPNETCORE_ENVIRONMENT
+          value: Production # or Development
 # cluster ip config
 ---
 apiVersion: v1

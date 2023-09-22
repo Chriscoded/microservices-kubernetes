@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.SyncDataServices.Http;
 
@@ -6,13 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // // Add services to the container.
 
+Console.WriteLine($"environment: {builder.Environment}");
 
 if (builder.Environment.IsProduction())
 {
     Console.WriteLine("--> Using SqlServer Db");
      builder.Services.AddDbContext<AppDbContext>(opt =>
             opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformsConn")));
- }
+}
 
  else
 {
@@ -22,6 +24,7 @@ if (builder.Environment.IsProduction())
 }
 
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
+builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 builder.Services.AddControllers();
@@ -49,7 +52,7 @@ Console.WriteLine($"--> CommandService Endpoint {configuration["CommandService"]
 
 app.UseAuthorization();
 
-PrepDb.PrepPopulation(app, app.Environment.IsProduction());
+PrepDb.PrepPopulation(app, true);
 
 app.MapControllers();
 
