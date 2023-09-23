@@ -1,4 +1,4 @@
-﻿using PlatformService.Model;
+﻿using PlatformService.Models;
 
 namespace PlatformService.Data
 {
