@@ -19,6 +19,7 @@ if (builder.Environment.IsProduction())
  else
 {
     Console.WriteLine("--> Using InMem Db");
+    Console.WriteLine("--> Not in production");
     builder.Services.AddDbContext<AppDbContext>(option =>
    option.UseInMemoryDatabase("InMem"));
 }

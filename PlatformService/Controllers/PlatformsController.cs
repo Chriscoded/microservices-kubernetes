@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Internal;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,6 +9,7 @@ using PlatformService.Data;
 using PlatformService.Dtos;
 using PlatformService.Models;
 using PlatformService.SyncDataServices.Http;
+using System.Text.Json;
 
 namespace PlatformService.Controllers
 {
@@ -76,8 +78,10 @@ namespace PlatformService.Controllers
             //Send Async Message
             try
             {
+                // Console.WriteLine($"Sending readDto {JsonSerializer.Serialize(platformReadDto)}");
                 var platformPublishedDto = _mapper.Map<PlatformPublishedDto>(platformReadDto);
                 platformPublishedDto.Event = "Platform_Published";
+                // Console.WriteLine($"Sending platformPublishedDto {JsonSerializer.Serialize(platformPublishedDto)}");
                 _messageBusClient.PublishNewPlatform(platformPublishedDto);
             }
             catch (Exception ex)

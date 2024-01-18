@@ -26,7 +26,7 @@ namespace PlatformService.AsyncDataServices
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
 
-                _channel.ExchangeDeclare(exchange: "trigger", type: ExchangeType.Fanout);
+                _channel.ExchangeDeclare(exchange: _configuration["Exchange"], type: ExchangeType.Fanout);
 
                 _connection.ConnectionShutdown += RabbitMQ_ConnectionShutdown;
 
@@ -50,7 +50,7 @@ namespace PlatformService.AsyncDataServices
             }
             else
             {
-                Console.WriteLine("--> RabbitMQ connectionis closed, not sending");
+                Console.WriteLine("--> RabbitMQ connection is closed, not sending");
             }   
         }
 
@@ -58,7 +58,7 @@ namespace PlatformService.AsyncDataServices
         {
             var body = Encoding.UTF8.GetBytes(message);
 
-            _channel.BasicPublish(exchange: "trigger",
+            _channel.BasicPublish(exchange: _configuration["Exchange"],
                             routingKey: "",
                             basicProperties: null,
                             body: body);
