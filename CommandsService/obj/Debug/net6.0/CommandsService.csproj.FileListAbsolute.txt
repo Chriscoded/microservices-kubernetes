@@ -78,3 +78,7 @@ C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\o
 C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\appsettings.Production.json
 C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\RabbitMQ.Client.dll
 C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\System.Threading.Channels.dll
+C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\Grpc.Net.Client.dll
+C:\Users\CHRISCODED\vs version projects\vs 2022 projects\s4\e3\CommandsService\bin\Debug\net6.0\Grpc.Net.Common.dll
